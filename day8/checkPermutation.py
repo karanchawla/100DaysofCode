@@ -4,10 +4,7 @@ import unittest
 def checkPermutations(str1, str2):
 	if(len(str1)!=len(str2)): return False
 
-	if (len(list(Counter(str1) - Counter(str2)))) == 0:
-		return True
-	else:
-		return False
+	return (not Counter(str1) - Counter(str2))
 
 class Test(unittest.TestCase):
     dataT = (
