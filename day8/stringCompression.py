@@ -1,6 +1,7 @@
 import unittest
 from collections import Counter
 
+#O(n)
 def stringCompression(str1):
     dicty = dict(Counter(str1))
     result = []
