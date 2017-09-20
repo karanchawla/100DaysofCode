@@ -40,6 +40,26 @@ class LinkedList:
 
         temp.next = new_node
 
+    # Find length of linked list
+    def getCount(self):
+        temp = self.head 
+        count = 0
+        while(temp):
+            count +=1
+            temp = temp.next
+
+        return count 
+
+    #Search an element in linked list
+    def search(self, key):
+        temp = self.head
+        while(temp):
+            if(temp.data == key):
+                return True
+            temp = temp.next
+
+        return False
+
 
 
 if __name__ == "__main__":
@@ -52,4 +72,4 @@ if __name__ == "__main__":
     llist.head.next = second
     second.next = third
 
-    llist.print_linkedlist()
+    print(llist.search(2))
