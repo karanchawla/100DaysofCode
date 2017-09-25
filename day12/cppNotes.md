@@ -97,7 +97,7 @@ int main()
     cout << "This is pair g" << g1.second << " with "
         << "value " << g1.first << "." << endl << endl;
 
-    cout << "This is pair g" << g3.second
+    cout << "This is pair g" << g3s.econd
         << " with value " << g3.first
         << "This pair was initialized as a copy of "
         << "pair g2" << endl << endl;
@@ -137,4 +137,27 @@ types explicitly.
 `pair_name = make_pair(v1, v2);`
 5. operators (=,<,>,!=)
 == checks for AND condition
+
+### Vector in STL
+1. begin() – Returns an iterator pointing to the first element
+2. end() – Returns an iterator pointing to the theoretical element that follows last element
+3. rbegin() – Returns a reverse iterator pointing to the last element
+4. rend() – Returns a reverse iterator pointing to the theoretical element preceding the first element
+5. size() - returns the size
+6. empty() - returns whether the container is empty or not
+7.front() = first element
+8. back() - last element
+9. at(g) - returns element at position g
+
+### Ways of copying a vector in CPP
+1. Iterative method
+2. Assignment operator
+3. By passing vector as a constructor
+4. copy(v1.begin(), v1.end(), back_inserter(v2))
+5. v2.assign(v1.begin(), v1.end())
+
+
+### Sort the first row
+sort(v1[0].begin(), v1[0].end())
+
 
