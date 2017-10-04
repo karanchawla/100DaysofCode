@@ -161,3 +161,17 @@ types explicitly.
 sort(v1[0].begin(), v1[0].end())
 
 
+### Strings
+1. A char array is simply an array terminated by null char. A string is a class which defines objects that are represented as stream
+of chars. 
+2. Memory allocated dynamically. 
+3. input functions: 
+    1. getline(cin, str) 
+    2. push_back('<insert some char>')
+    3. pop_back('<removes last char from the string>')
+    4. str.capacity() - indicates the capacity allocated for the string
+    5. str.resize()
+    6. str.shrink_to_fit()
+    7. begin(), end(), rbegin(), rend()
+    8. copy("char array", len, pos) -> this function copies the substring in target char array mentioned in its args. 
+    9. str1.swap(str2) - swaps one string with another. 
