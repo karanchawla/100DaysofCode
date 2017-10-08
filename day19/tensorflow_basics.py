@@ -228,3 +228,78 @@ for i in range(10):
 # eg: suppose you want to decide whether to multiply or add two tensors based on a predicate. 
 
 a = tf.constant(1)
+b = tf.constant(1)
+
+p = tf.constant(True)
+
+x = tf.cond(p, lambda: a+b, lambda: a*b)
+
+print(tf.Session().run(x))
+
+# Since the predicate is true in this case the output will be addition. 
+
+# TO perform operations in batch use tf.where 
+
+a = tf.constant([1,2])
+b = tf.constant([2,2])
+
+p = tf.constant([True, False])
+
+x = tf.where(p, a+b, a*b)
+
+print(rf.Session().run())
+
+# While loop in tf 
+# Example to generate fibonnaci with while loops 
+n = tf.constant(5) 
+
+def cond(i, a, b):
+	return i < n
+
+def body(i, a, b):
+	return i+1, b, a+b
+
+i,a,b = tf.while_loop(cond, body, (2,1,1))
+
+print(tf.Session().run(b))
+
+# Suppose you want to save these vals. 
+
+n = tf.constant(5) 
+
+def cond(i, a, b):
+	return i < n
+
+def body(i, a, b, c):
+    return i + 1, b, a + b, tf.concat([c, [a + b]], 0)
+
+i, a, b, c = tf.while_loop(cond, body, (2, 1, 1, tf.constant([1, 1])),
+	shape_invariants = (tf.TensorShape([]),
+						tf.TensorShape([]),
+						tf.TensorShape([]),
+						tf.TensorShape([None]))
+	
+)
+print(tf.Session().run(c))
+
+# ^ that is ugly and somewhat inefficient. TF provides tf.TensorArray for such arrays that grow in size. So to do 
+# the same thing as above we can do the following 
+
+n = tf.constant(5) 
+
+c = tf.TensorArray(tf.int32, n)
+c = c.write(0, 1)
+c = c.write(1, 1)
+
+def cond(i, a, b):
+	return i < n
+
+def body(i, a, b, c):
+    return i + 1, b, a + b, c 
+
+i, a, b, c = tf.while_loop(cond, body, (2, 1, 1, c))
+
+c = c.stack()
+
+print(tf.Session().run(c))
+
