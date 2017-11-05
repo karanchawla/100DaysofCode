@@ -18,12 +18,14 @@ void printAllCombinations(string pattern)
 		list.pop();
 
 		size_t index;
+		size_t index2;
 
-		if((index = curr.find_first_of('?')) != string::npos )
+		if((index = curr.find_first_of('?')) != string::npos && (index2 = curr.find_last_of("?") != string::npos))
 		{
 			for(size_t i = 0; i < 2; i++)
 			{
 				curr[index] = i + '0';
+				curr[index2] = i + '0';
 				list.push(curr);
 			}
 		}
@@ -34,7 +36,7 @@ void printAllCombinations(string pattern)
 
 int main()
 {
-	string str = "1?001?01?0";
+	string str = "1?11?00?1?";
 
 	printAllCombinations(str);
 }
